@@ -37,6 +37,8 @@ Currently no settings are available; if you can think of any that would be usefu
 
 The Meld executable must be available on your environment path.
 
+Doesn't seem to be able to invoke Meld correctly when VScode is invoked from WSL.
+
 Also note that in this initial release, error handling is basically non existent.
 This will improve in future versions if there is interest in the package.
 
