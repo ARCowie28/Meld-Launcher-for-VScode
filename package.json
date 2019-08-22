@@ -1,0 +1,77 @@
+{
+	"name": "meldlauncher",
+	"displayName": "Meld Launcher for VScode",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.37.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:meld.meldroot",
+		"onCommand:meld.melddir",
+		"onCommand:meld.meldfile"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "meld.meldroot",
+				"title": "Compare Root Directory with Meld"
+			},
+			{
+				"command": "meld.melddir",
+				"title": "Compare This Directory with Meld"
+			},
+			{
+				"command": "meld.meldfile",
+				"title": "Compare This File with Meld"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "meld.melddir",
+					"when": "false"
+				},
+				{
+					"command": "meld.meldfile",
+					"when": "false"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "meld.melddir",
+					"when": "explorerResourceIsFolder == true",
+					"group": "3_compare"
+				},
+				{
+					"command": "meld.meldfile",
+					"when": "explorerResourceIsFolder == false",
+					"group": "3_compare"
+				}
+			]
+			
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.37.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"tslint": "^5.12.1",
+		"vscode-test": "^1.0.2"
+	}
+}
